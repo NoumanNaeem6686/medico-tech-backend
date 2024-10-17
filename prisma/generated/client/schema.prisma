@@ -1,0 +1,54 @@
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "./generated/client"
+}
+
+// Existing models...
+model AdminUser {
+  id        String    @id @default(auto()) @map("_id") @db.ObjectId
+  userName  String    @unique
+  email     String    @unique
+  password  String
+  userType  String
+  createdAt DateTime  @default(now())
+  updatedAt DateTime? @default(now()) @updatedAt
+}
+
+model User {
+  id        String    @id @default(auto()) @map("_id") @db.ObjectId
+  userName  String    @unique
+  email     String    @unique
+  password  String
+  userType  String
+  mobileNo  String?
+  createdAt DateTime  @default(now())
+  updatedAt DateTime? @default(now()) @updatedAt
+}
+
+model Blog {
+  id           String    @id @default(auto()) @map("_id") @db.ObjectId
+  title        String
+  doctorName   String
+  blogImageUrl String
+  blogImageId  String
+  description  String
+  tags         String[]
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime? @default(now()) @updatedAt
+}
+
+model Meeting {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  email       String
+  userName    String
+  bookingDate DateTime
+  meetingTime String
+  contactNo   String
+  purpose     String
+  createdAt   DateTime @default(now())
+}
