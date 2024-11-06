@@ -64,3 +64,13 @@ model Audit {
   meetingTime String
   contactType String // Ensure this field is added
 }
+
+model Contact {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  name        String
+  email       String
+  contactNo   String
+  message     String
+  contactType String
+  createdAt   DateTime @default(now())
+}

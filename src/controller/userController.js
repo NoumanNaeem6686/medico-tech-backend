@@ -362,6 +362,29 @@ const contactUs = async (req, res) => {
   }
 };
 
+const getAllContacts = async (req, res) => {
+  try {
+    // Fetch all contacts from the database
+    const contacts = await prisma.contact.findMany();
+
+    // Respond with success message and data
+    res.status(200).json({
+      message: "Contacts retrieved successfully",
+      data: contacts,
+      success: true,
+    });
+  } catch (error) {
+    console.error("Error retrieving contacts:", error);
+    res.status(500).json({
+      message: "Failed to retrieve contacts",
+      error: error.message,
+      success: false,
+    });
+  } finally {
+    await prisma.$disconnect();
+  }
+};
+
 // const doUpdateUser = async (req, res) => {
 //   try {
 //     const userId = req.params.id;
@@ -604,4 +627,5 @@ module.exports = {
   bookAudit,
   getAllAudits,
   contactUs,
+  getAllContacts,
 };

@@ -8,6 +8,7 @@ const {
   bookAudit,
   getAllAudits,
   contactUs,
+  getAllContacts,
 } = require("../controller/userController");
 const { verifyUser } = require("../utils/verifyUser");
 
@@ -17,6 +18,7 @@ routes.post("/book-meeting", bookMeeting);
 routes.post("/book-audit", bookAudit);
 routes.get("/get-all-audits", getAllAudits);
 routes.post("/contact-us", contactUs);
+routes.get("/get-all-contacts", getAllContacts);
 // routes.put("/update-user/:id", doUpdateUser);
 // routes.put("/updatePassword/:id", updatePassword);
 
