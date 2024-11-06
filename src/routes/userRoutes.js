@@ -6,6 +6,8 @@ const {
   doFetchCurrentUser,
   bookMeeting,
   bookAudit,
+  getAllAudits,
+  contactUs,
 } = require("../controller/userController");
 const { verifyUser } = require("../utils/verifyUser");
 
@@ -13,6 +15,8 @@ routes.post("/signupUser", doSignup);
 routes.post("/loginUser", doLogin);
 routes.post("/book-meeting", bookMeeting);
 routes.post("/book-audit", bookAudit);
+routes.get("/get-all-audits", getAllAudits);
+routes.post("/contact-us", contactUs);
 // routes.put("/update-user/:id", doUpdateUser);
 // routes.put("/updatePassword/:id", updatePassword);
 

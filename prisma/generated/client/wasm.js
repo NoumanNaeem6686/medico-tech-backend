@@ -153,7 +153,8 @@ exports.Prisma.MeetingScalarFieldEnum = {
   meetingTime: 'meetingTime',
   contactNo: 'contactNo',
   purpose: 'purpose',
-  createdAt: 'createdAt'
+  createdAt: 'createdAt',
+  contactType: 'contactType'
 };
 
 exports.Prisma.AuditScalarFieldEnum = {
@@ -163,7 +164,8 @@ exports.Prisma.AuditScalarFieldEnum = {
   bookingDate: 'bookingDate',
   contactNo: 'contactNo',
   purpose: 'purpose',
-  meetingTime: 'meetingTime'
+  meetingTime: 'meetingTime',
+  contactType: 'contactType'
 };
 
 exports.Prisma.SortOrder = {

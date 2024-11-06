@@ -152,7 +152,7 @@ const getAllUsers = async (req, res) => {
 };
 
 const createBlog = async (req, res) => {
-  const { title, doctorName, blogImageUrl, blogImageId, description, tags } =
+  const { title, blogAuther, blogImageUrl, blogImageId, description, tags } =
     req.body;
 
   try {
@@ -167,8 +167,8 @@ const createBlog = async (req, res) => {
         blogImageUrl,
         blogImageId,
         description,
-        doctorName,
-        tags   
+        doctorName: blogAuther,
+        tags,
       },
     });
 
@@ -182,7 +182,6 @@ const createBlog = async (req, res) => {
       .json({ error: "An error occurred while creating the blog" });
   }
 };
-
 
 const getAllBlogs = async (req, res) => {
   try {
@@ -231,12 +230,16 @@ const updateBlog = async (req, res) => {
   const updateData = {};
 
   // Conditionally add fields to the updateData object
-  if (inputData.doctorName !== undefined) updateData.doctorName = inputData.doctorName;
+  if (inputData.doctorName !== undefined)
+    updateData.doctorName = inputData.doctorName;
   if (inputData.title !== undefined) updateData.title = inputData.title;
-  if (inputData.blogImageUrl !== undefined) updateData.blogImageUrl = inputData.blogImageUrl;
-  if (inputData.blogImageId !== undefined) updateData.blogImageId = inputData.blogImageId;
-  if (inputData.description !== undefined) updateData.description = inputData.description;
-  
+  if (inputData.blogImageUrl !== undefined)
+    updateData.blogImageUrl = inputData.blogImageUrl;
+  if (inputData.blogImageId !== undefined)
+    updateData.blogImageId = inputData.blogImageId;
+  if (inputData.description !== undefined)
+    updateData.description = inputData.description;
+
   // Ensure that tags are handled as an array
   if (Array.isArray(inputData.tags)) updateData.tags = inputData.tags;
 
@@ -248,7 +251,13 @@ const updateBlog = async (req, res) => {
     });
 
     // Return success response
-    res.status(200).json({ message: "Blog Updated successfully", success: true, updatedBlog });
+    res
+      .status(200)
+      .json({
+        message: "Blog Updated successfully",
+        success: true,
+        updatedBlog,
+      });
   } catch (error) {
     console.error("Error updating blog:", error);
 
@@ -261,7 +270,6 @@ const updateBlog = async (req, res) => {
     res.status(500).json({ message: "Internal server error" });
   }
 };
-
 
 const getBlogById = async (req, res) => {
   const { id } = req.params;

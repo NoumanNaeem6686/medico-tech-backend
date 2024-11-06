@@ -3957,6 +3957,7 @@ export namespace Prisma {
     contactNo: string | null
     purpose: string | null
     createdAt: Date | null
+    contactType: string | null
   }
 
   export type MeetingMaxAggregateOutputType = {
@@ -3968,6 +3969,7 @@ export namespace Prisma {
     contactNo: string | null
     purpose: string | null
     createdAt: Date | null
+    contactType: string | null
   }
 
   export type MeetingCountAggregateOutputType = {
@@ -3979,6 +3981,7 @@ export namespace Prisma {
     contactNo: number
     purpose: number
     createdAt: number
+    contactType: number
     _all: number
   }
 
@@ -3992,6 +3995,7 @@ export namespace Prisma {
     contactNo?: true
     purpose?: true
     createdAt?: true
+    contactType?: true
   }
 
   export type MeetingMaxAggregateInputType = {
@@ -4003,6 +4007,7 @@ export namespace Prisma {
     contactNo?: true
     purpose?: true
     createdAt?: true
+    contactType?: true
   }
 
   export type MeetingCountAggregateInputType = {
@@ -4014,6 +4019,7 @@ export namespace Prisma {
     contactNo?: true
     purpose?: true
     createdAt?: true
+    contactType?: true
     _all?: true
   }
 
@@ -4098,6 +4104,7 @@ export namespace Prisma {
     contactNo: string
     purpose: string
     createdAt: Date
+    contactType: string
     _count: MeetingCountAggregateOutputType | null
     _min: MeetingMinAggregateOutputType | null
     _max: MeetingMaxAggregateOutputType | null
@@ -4126,6 +4133,7 @@ export namespace Prisma {
     contactNo?: boolean
     purpose?: boolean
     createdAt?: boolean
+    contactType?: boolean
   }, ExtArgs["result"]["meeting"]>
 
 
@@ -4138,6 +4146,7 @@ export namespace Prisma {
     contactNo?: boolean
     purpose?: boolean
     createdAt?: boolean
+    contactType?: boolean
   }
 
 
@@ -4153,6 +4162,7 @@ export namespace Prisma {
       contactNo: string
       purpose: string
       createdAt: Date
+      contactType: string
     }, ExtArgs["result"]["meeting"]>
     composites: {}
   }
@@ -4553,6 +4563,7 @@ export namespace Prisma {
     readonly contactNo: FieldRef<"Meeting", 'String'>
     readonly purpose: FieldRef<"Meeting", 'String'>
     readonly createdAt: FieldRef<"Meeting", 'DateTime'>
+    readonly contactType: FieldRef<"Meeting", 'String'>
   }
     
 
@@ -4871,6 +4882,7 @@ export namespace Prisma {
     contactNo: string | null
     purpose: string | null
     meetingTime: string | null
+    contactType: string | null
   }
 
   export type AuditMaxAggregateOutputType = {
@@ -4881,6 +4893,7 @@ export namespace Prisma {
     contactNo: string | null
     purpose: string | null
     meetingTime: string | null
+    contactType: string | null
   }
 
   export type AuditCountAggregateOutputType = {
@@ -4891,6 +4904,7 @@ export namespace Prisma {
     contactNo: number
     purpose: number
     meetingTime: number
+    contactType: number
     _all: number
   }
 
@@ -4903,6 +4917,7 @@ export namespace Prisma {
     contactNo?: true
     purpose?: true
     meetingTime?: true
+    contactType?: true
   }
 
   export type AuditMaxAggregateInputType = {
@@ -4913,6 +4928,7 @@ export namespace Prisma {
     contactNo?: true
     purpose?: true
     meetingTime?: true
+    contactType?: true
   }
 
   export type AuditCountAggregateInputType = {
@@ -4923,6 +4939,7 @@ export namespace Prisma {
     contactNo?: true
     purpose?: true
     meetingTime?: true
+    contactType?: true
     _all?: true
   }
 
@@ -5006,6 +5023,7 @@ export namespace Prisma {
     contactNo: string
     purpose: string
     meetingTime: string
+    contactType: string
     _count: AuditCountAggregateOutputType | null
     _min: AuditMinAggregateOutputType | null
     _max: AuditMaxAggregateOutputType | null
@@ -5033,6 +5051,7 @@ export namespace Prisma {
     contactNo?: boolean
     purpose?: boolean
     meetingTime?: boolean
+    contactType?: boolean
   }, ExtArgs["result"]["audit"]>
 
 
@@ -5044,6 +5063,7 @@ export namespace Prisma {
     contactNo?: boolean
     purpose?: boolean
     meetingTime?: boolean
+    contactType?: boolean
   }
 
 
@@ -5058,6 +5078,7 @@ export namespace Prisma {
       contactNo: string
       purpose: string
       meetingTime: string
+      contactType: string
     }, ExtArgs["result"]["audit"]>
     composites: {}
   }
@@ -5457,6 +5478,7 @@ export namespace Prisma {
     readonly contactNo: FieldRef<"Audit", 'String'>
     readonly purpose: FieldRef<"Audit", 'String'>
     readonly meetingTime: FieldRef<"Audit", 'String'>
+    readonly contactType: FieldRef<"Audit", 'String'>
   }
     
 
@@ -5811,7 +5833,8 @@ export namespace Prisma {
     meetingTime: 'meetingTime',
     contactNo: 'contactNo',
     purpose: 'purpose',
-    createdAt: 'createdAt'
+    createdAt: 'createdAt',
+    contactType: 'contactType'
   };
 
   export type MeetingScalarFieldEnum = (typeof MeetingScalarFieldEnum)[keyof typeof MeetingScalarFieldEnum]
@@ -5824,7 +5847,8 @@ export namespace Prisma {
     bookingDate: 'bookingDate',
     contactNo: 'contactNo',
     purpose: 'purpose',
-    meetingTime: 'meetingTime'
+    meetingTime: 'meetingTime',
+    contactType: 'contactType'
   };
 
   export type AuditScalarFieldEnum = (typeof AuditScalarFieldEnum)[keyof typeof AuditScalarFieldEnum]
@@ -6109,6 +6133,7 @@ export namespace Prisma {
     contactNo?: StringFilter<"Meeting"> | string
     purpose?: StringFilter<"Meeting"> | string
     createdAt?: DateTimeFilter<"Meeting"> | Date | string
+    contactType?: StringFilter<"Meeting"> | string
   }
 
   export type MeetingOrderByWithRelationInput = {
@@ -6120,6 +6145,7 @@ export namespace Prisma {
     contactNo?: SortOrder
     purpose?: SortOrder
     createdAt?: SortOrder
+    contactType?: SortOrder
   }
 
   export type MeetingWhereUniqueInput = Prisma.AtLeast<{
@@ -6134,6 +6160,7 @@ export namespace Prisma {
     contactNo?: StringFilter<"Meeting"> | string
     purpose?: StringFilter<"Meeting"> | string
     createdAt?: DateTimeFilter<"Meeting"> | Date | string
+    contactType?: StringFilter<"Meeting"> | string
   }, "id">
 
   export type MeetingOrderByWithAggregationInput = {
@@ -6145,6 +6172,7 @@ export namespace Prisma {
     contactNo?: SortOrder
     purpose?: SortOrder
     createdAt?: SortOrder
+    contactType?: SortOrder
     _count?: MeetingCountOrderByAggregateInput
     _max?: MeetingMaxOrderByAggregateInput
     _min?: MeetingMinOrderByAggregateInput
@@ -6162,6 +6190,7 @@ export namespace Prisma {
     contactNo?: StringWithAggregatesFilter<"Meeting"> | string
     purpose?: StringWithAggregatesFilter<"Meeting"> | string
     createdAt?: DateTimeWithAggregatesFilter<"Meeting"> | Date | string
+    contactType?: StringWithAggregatesFilter<"Meeting"> | string
   }
 
   export type AuditWhereInput = {
@@ -6175,6 +6204,7 @@ export namespace Prisma {
     contactNo?: StringFilter<"Audit"> | string
     purpose?: StringFilter<"Audit"> | string
     meetingTime?: StringFilter<"Audit"> | string
+    contactType?: StringFilter<"Audit"> | string
   }
 
   export type AuditOrderByWithRelationInput = {
@@ -6185,6 +6215,7 @@ export namespace Prisma {
     contactNo?: SortOrder
     purpose?: SortOrder
     meetingTime?: SortOrder
+    contactType?: SortOrder
   }
 
   export type AuditWhereUniqueInput = Prisma.AtLeast<{
@@ -6198,6 +6229,7 @@ export namespace Prisma {
     contactNo?: StringFilter<"Audit"> | string
     purpose?: StringFilter<"Audit"> | string
     meetingTime?: StringFilter<"Audit"> | string
+    contactType?: StringFilter<"Audit"> | string
   }, "id">
 
   export type AuditOrderByWithAggregationInput = {
@@ -6208,6 +6240,7 @@ export namespace Prisma {
     contactNo?: SortOrder
     purpose?: SortOrder
     meetingTime?: SortOrder
+    contactType?: SortOrder
     _count?: AuditCountOrderByAggregateInput
     _max?: AuditMaxOrderByAggregateInput
     _min?: AuditMinOrderByAggregateInput
@@ -6224,6 +6257,7 @@ export namespace Prisma {
     contactNo?: StringWithAggregatesFilter<"Audit"> | string
     purpose?: StringWithAggregatesFilter<"Audit"> | string
     meetingTime?: StringWithAggregatesFilter<"Audit"> | string
+    contactType?: StringWithAggregatesFilter<"Audit"> | string
   }
 
   export type AdminUserCreateInput = {
@@ -6454,6 +6488,7 @@ export namespace Prisma {
     contactNo: string
     purpose: string
     createdAt?: Date | string
+    contactType: string
   }
 
   export type MeetingUncheckedCreateInput = {
@@ -6465,6 +6500,7 @@ export namespace Prisma {
     contactNo: string
     purpose: string
     createdAt?: Date | string
+    contactType: string
   }
 
   export type MeetingUpdateInput = {
@@ -6475,6 +6511,7 @@ export namespace Prisma {
     contactNo?: StringFieldUpdateOperationsInput | string
     purpose?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    contactType?: StringFieldUpdateOperationsInput | string
   }
 
   export type MeetingUncheckedUpdateInput = {
@@ -6485,6 +6522,7 @@ export namespace Prisma {
     contactNo?: StringFieldUpdateOperationsInput | string
     purpose?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    contactType?: StringFieldUpdateOperationsInput | string
   }
 
   export type MeetingCreateManyInput = {
@@ -6496,6 +6534,7 @@ export namespace Prisma {
     contactNo: string
     purpose: string
     createdAt?: Date | string
+    contactType: string
   }
 
   export type MeetingUpdateManyMutationInput = {
@@ -6506,6 +6545,7 @@ export namespace Prisma {
     contactNo?: StringFieldUpdateOperationsInput | string
     purpose?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    contactType?: StringFieldUpdateOperationsInput | string
   }
 
   export type MeetingUncheckedUpdateManyInput = {
@@ -6516,6 +6556,7 @@ export namespace Prisma {
     contactNo?: StringFieldUpdateOperationsInput | string
     purpose?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    contactType?: StringFieldUpdateOperationsInput | string
   }
 
   export type AuditCreateInput = {
@@ -6526,6 +6567,7 @@ export namespace Prisma {
     contactNo: string
     purpose: string
     meetingTime: string
+    contactType: string
   }
 
   export type AuditUncheckedCreateInput = {
@@ -6536,6 +6578,7 @@ export namespace Prisma {
     contactNo: string
     purpose: string
     meetingTime: string
+    contactType: string
   }
 
   export type AuditUpdateInput = {
@@ -6545,6 +6588,7 @@ export namespace Prisma {
     contactNo?: StringFieldUpdateOperationsInput | string
     purpose?: StringFieldUpdateOperationsInput | string
     meetingTime?: StringFieldUpdateOperationsInput | string
+    contactType?: StringFieldUpdateOperationsInput | string
   }
 
   export type AuditUncheckedUpdateInput = {
@@ -6554,6 +6598,7 @@ export namespace Prisma {
     contactNo?: StringFieldUpdateOperationsInput | string
     purpose?: StringFieldUpdateOperationsInput | string
     meetingTime?: StringFieldUpdateOperationsInput | string
+    contactType?: StringFieldUpdateOperationsInput | string
   }
 
   export type AuditCreateManyInput = {
@@ -6564,6 +6609,7 @@ export namespace Prisma {
     contactNo: string
     purpose: string
     meetingTime: string
+    contactType: string
   }
 
   export type AuditUpdateManyMutationInput = {
@@ -6573,6 +6619,7 @@ export namespace Prisma {
     contactNo?: StringFieldUpdateOperationsInput | string
     purpose?: StringFieldUpdateOperationsInput | string
     meetingTime?: StringFieldUpdateOperationsInput | string
+    contactType?: StringFieldUpdateOperationsInput | string
   }
 
   export type AuditUncheckedUpdateManyInput = {
@@ -6582,6 +6629,7 @@ export namespace Prisma {
     contactNo?: StringFieldUpdateOperationsInput | string
     purpose?: StringFieldUpdateOperationsInput | string
     meetingTime?: StringFieldUpdateOperationsInput | string
+    contactType?: StringFieldUpdateOperationsInput | string
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -6818,6 +6866,7 @@ export namespace Prisma {
     contactNo?: SortOrder
     purpose?: SortOrder
     createdAt?: SortOrder
+    contactType?: SortOrder
   }
 
   export type MeetingMaxOrderByAggregateInput = {
@@ -6829,6 +6878,7 @@ export namespace Prisma {
     contactNo?: SortOrder
     purpose?: SortOrder
     createdAt?: SortOrder
+    contactType?: SortOrder
   }
 
   export type MeetingMinOrderByAggregateInput = {
@@ -6840,6 +6890,7 @@ export namespace Prisma {
     contactNo?: SortOrder
     purpose?: SortOrder
     createdAt?: SortOrder
+    contactType?: SortOrder
   }
 
   export type AuditCountOrderByAggregateInput = {
@@ -6850,6 +6901,7 @@ export namespace Prisma {
     contactNo?: SortOrder
     purpose?: SortOrder
     meetingTime?: SortOrder
+    contactType?: SortOrder
   }
 
   export type AuditMaxOrderByAggregateInput = {
@@ -6860,6 +6912,7 @@ export namespace Prisma {
     contactNo?: SortOrder
     purpose?: SortOrder
     meetingTime?: SortOrder
+    contactType?: SortOrder
   }
 
   export type AuditMinOrderByAggregateInput = {
@@ -6870,6 +6923,7 @@ export namespace Prisma {
     contactNo?: SortOrder
     purpose?: SortOrder
     meetingTime?: SortOrder
+    contactType?: SortOrder
   }
 
   export type StringFieldUpdateOperationsInput = {

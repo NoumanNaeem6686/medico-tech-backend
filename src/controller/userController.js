@@ -132,6 +132,29 @@ const doLogin = async (req, res) => {
   }
 };
 
+const getAllAudits = async (req, res) => {
+  try {
+    // Fetch all audits from the database
+    const audits = await prisma.audit.findMany();
+
+    // Respond with success message and data
+    res.status(200).json({
+      message: "Audits retrieved successfully",
+      data: audits,
+      success: true,
+    });
+  } catch (error) {
+    console.error("Error retrieving audits:", error);
+    res.status(500).json({
+      message: "Failed to retrieve audits",
+      error: error.message,
+      success: false,
+    });
+  } finally {
+    await prisma.$disconnect();
+  }
+};
+
 const doFetchCurrentUser = async (req, res) => {
   try {
     const userId = req.userId;
@@ -174,8 +197,15 @@ const doFetchCurrentUser = async (req, res) => {
 
 const bookMeeting = async (req, res) => {
   try {
-    const { email, userName, bookingDate, contactNo, purpose, meetingTime } =
-      req.body;
+    const {
+      email,
+      userName,
+      bookingDate,
+      contactNo,
+      purpose,
+      meetingTime,
+      contactType,
+    } = req.body;
 
     // Validate required fields
     if (
@@ -184,7 +214,8 @@ const bookMeeting = async (req, res) => {
       !bookingDate ||
       !contactNo ||
       !purpose ||
-      !meetingTime
+      !meetingTime ||
+      !contactType
     ) {
       return res.status(400).json({
         message: "All fields are required",
@@ -201,6 +232,7 @@ const bookMeeting = async (req, res) => {
         contactNo,
         purpose,
         meetingTime,
+        contactType,
       },
     });
 
@@ -224,10 +256,26 @@ const bookMeeting = async (req, res) => {
 
 const bookAudit = async (req, res) => {
   try {
-    const { email, userName, bookingDate, contactNo, purpose } = req.body;
+    const {
+      email,
+      userName,
+      bookingDate,
+      contactNo,
+      purpose,
+      meetingTime,
+      contactType,
+    } = req.body;
 
     // Validate required fields
-    if (!email || !userName || !bookingDate || !contactNo || !purpose) {
+    if (
+      !email ||
+      !userName ||
+      !bookingDate ||
+      !contactNo ||
+      !purpose ||
+      !meetingTime ||
+      !contactType
+    ) {
       return res.status(400).json({
         message: "All fields are required",
         success: false,
@@ -242,6 +290,8 @@ const bookAudit = async (req, res) => {
         bookingDate: new Date(bookingDate),
         contactNo,
         purpose,
+        meetingTime,
+        contactType,
       },
     });
 
@@ -255,6 +305,55 @@ const bookAudit = async (req, res) => {
     console.error("Error booking audit:", error);
     res.status(500).json({
       message: "Failed to book audit",
+      error: error.message,
+      success: false,
+    });
+  } finally {
+    await prisma.$disconnect();
+  }
+};
+
+const contactUs = async (req, res) => {
+  try {
+    const { name, email, contactNo, message, contactType } = req.body;
+
+    // Validate required fields
+    if (!name || !email || !contactNo || !message || !contactType) {
+      return res.status(400).json({
+        message: "All fields are required",
+        success: false,
+      });
+    }
+
+    // Validate contact type (optional validation based on your requirements)
+    if (contactType !== "audio" && contactType !== "video") {
+      return res.status(400).json({
+        message: "Invalid contact type. It must be 'audio' or 'video'.",
+        success: false,
+      });
+    }
+
+    // Save the contact request to the database
+    const newContact = await prisma.contact.create({
+      data: {
+        name,
+        email,
+        contactNo,
+        message,
+        contactType,
+      },
+    });
+
+    // Respond with success message
+    res.status(201).json({
+      message: "Contact request created successfully!",
+      contact: newContact,
+      success: true,
+    });
+  } catch (error) {
+    console.error("Error creating contact request:", error);
+    res.status(500).json({
+      message: "Failed to create contact request",
       error: error.message,
       success: false,
     });
@@ -503,4 +602,6 @@ module.exports = {
   doFetchCurrentUser,
   bookMeeting,
   bookAudit,
+  getAllAudits,
+  contactUs,
 };
