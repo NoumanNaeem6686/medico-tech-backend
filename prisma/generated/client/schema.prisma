@@ -52,3 +52,13 @@ model Meeting {
   purpose     String
   createdAt   DateTime @default(now())
 }
+
+model Audit {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  email       String
+  userName    String
+  bookingDate DateTime
+  contactNo   String
+  purpose     String
+  meetingTime String
+}

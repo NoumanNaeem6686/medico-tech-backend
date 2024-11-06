@@ -156,6 +156,16 @@ exports.Prisma.MeetingScalarFieldEnum = {
   createdAt: 'createdAt'
 };
 
+exports.Prisma.AuditScalarFieldEnum = {
+  id: 'id',
+  email: 'email',
+  userName: 'userName',
+  bookingDate: 'bookingDate',
+  contactNo: 'contactNo',
+  purpose: 'purpose',
+  meetingTime: 'meetingTime'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -171,7 +181,8 @@ exports.Prisma.ModelName = {
   AdminUser: 'AdminUser',
   User: 'User',
   Blog: 'Blog',
-  Meeting: 'Meeting'
+  Meeting: 'Meeting',
+  Audit: 'Audit'
 };
 
 /**

@@ -119,7 +119,7 @@ const doLogin = async (req, res) => {
     res
       .status(200)
       .cookie("access_token", token, { httpOnly: true })
-      .json({ message:"user login successfully",user: rest, token: token });
+      .json({ message: "user login successfully", user: rest, token: token });
   } catch (error) {
     console.log("error", error.message);
     return res.status(500).json({
@@ -132,8 +132,6 @@ const doLogin = async (req, res) => {
   }
 };
 
-
-
 const doFetchCurrentUser = async (req, res) => {
   try {
     const userId = req.userId;
@@ -142,7 +140,6 @@ const doFetchCurrentUser = async (req, res) => {
 
     let user = await prisma.user.findUnique({
       where: { id: userId },
-
     });
 
     console.log("user in login ", user);
@@ -177,10 +174,18 @@ const doFetchCurrentUser = async (req, res) => {
 
 const bookMeeting = async (req, res) => {
   try {
-    const { email, userName, bookingDate, contactNo, purpose, meetingTime } = req.body;
+    const { email, userName, bookingDate, contactNo, purpose, meetingTime } =
+      req.body;
 
     // Validate required fields
-    if (!email || !userName || !bookingDate || !contactNo || !purpose || !meetingTime) {
+    if (
+      !email ||
+      !userName ||
+      !bookingDate ||
+      !contactNo ||
+      !purpose ||
+      !meetingTime
+    ) {
       return res.status(400).json({
         message: "All fields are required",
         success: false,
@@ -192,10 +197,10 @@ const bookMeeting = async (req, res) => {
       data: {
         email,
         userName,
-        bookingDate: new Date(bookingDate), 
+        bookingDate: new Date(bookingDate),
         contactNo,
         purpose,
-        meetingTime
+        meetingTime,
       },
     });
 
@@ -209,6 +214,47 @@ const bookMeeting = async (req, res) => {
     console.error("Error booking meeting:", error);
     res.status(500).json({
       message: "Failed to book meeting",
+      error: error.message,
+      success: false,
+    });
+  } finally {
+    await prisma.$disconnect();
+  }
+};
+
+const bookAudit = async (req, res) => {
+  try {
+    const { email, userName, bookingDate, contactNo, purpose } = req.body;
+
+    // Validate required fields
+    if (!email || !userName || !bookingDate || !contactNo || !purpose) {
+      return res.status(400).json({
+        message: "All fields are required",
+        success: false,
+      });
+    }
+
+    // Save the audit booking details to the database
+    const newAudit = await prisma.audit.create({
+      data: {
+        email,
+        userName,
+        bookingDate: new Date(bookingDate),
+        contactNo,
+        purpose,
+      },
+    });
+
+    // Respond with success message
+    res.status(201).json({
+      message: "Audit booked successfully!",
+      audit: newAudit,
+      success: true,
+    });
+  } catch (error) {
+    console.error("Error booking audit:", error);
+    res.status(500).json({
+      message: "Failed to book audit",
       error: error.message,
       success: false,
     });
@@ -378,20 +424,6 @@ const bookMeeting = async (req, res) => {
 //   }
 // };
 
-;
-
-
-
-
-
-
-
-
-
-
-
-
-
 // const updatePassword = async (req, res) => {
 //   try {
 //     const userId = req.params.id;
@@ -469,7 +501,6 @@ module.exports = {
   doSignup,
   doLogin,
   doFetchCurrentUser,
-  bookMeeting
+  bookMeeting,
+  bookAudit,
 };
-
-

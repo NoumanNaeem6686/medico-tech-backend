@@ -4,14 +4,15 @@ const {
   doSignup,
   doLogin,
   doFetchCurrentUser,
-  bookMeeting
- 
+  bookMeeting,
+  bookAudit,
 } = require("../controller/userController");
 const { verifyUser } = require("../utils/verifyUser");
 
 routes.post("/signupUser", doSignup);
 routes.post("/loginUser", doLogin);
 routes.post("/book-meeting", bookMeeting);
+routes.post("/book-audit", bookAudit);
 // routes.put("/update-user/:id", doUpdateUser);
 // routes.put("/updatePassword/:id", updatePassword);
 
