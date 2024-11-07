@@ -118,6 +118,7 @@ const doAdminLogin = async (req, res) => {
       message: "Login Successful",
       success: true,
       admin: adminDataWithoutPassword,
+      token,
     });
   } catch (error) {
     console.error("Login error:", error);
@@ -251,13 +252,11 @@ const updateBlog = async (req, res) => {
     });
 
     // Return success response
-    res
-      .status(200)
-      .json({
-        message: "Blog Updated successfully",
-        success: true,
-        updatedBlog,
-      });
+    res.status(200).json({
+      message: "Blog Updated successfully",
+      success: true,
+      updatedBlog,
+    });
   } catch (error) {
     console.error("Error updating blog:", error);
 
