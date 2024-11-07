@@ -13,7 +13,7 @@ const app = express();
 
 app.use(express.json());
 const allowedOrigins = [
-  // "http://localhost:3000",
+  "http://localhost:3000",
   // "http://localhost:3001",
   "https://medico-tech-admin-frontend-three.vercel.app/",
 ];
