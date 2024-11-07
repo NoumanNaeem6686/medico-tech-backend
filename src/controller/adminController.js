@@ -153,11 +153,17 @@ const getAllUsers = async (req, res) => {
 };
 
 const createBlog = async (req, res) => {
-  const { title, blogAuther, blogImageUrl, blogImageId, description, tags } =
+  const { title, doctorName, blogImageUrl, blogImageId, description, tags } =
     req.body;
 
   try {
-    if (!title || !blogImageUrl || !blogImageId || !description) {
+    if (
+      !title ||
+      !blogImageUrl ||
+      !blogImageId ||
+      !description ||
+      !doctorName
+    ) {
       return res.status(400).json({ error: "All fields are required" });
     }
 
@@ -168,7 +174,7 @@ const createBlog = async (req, res) => {
         blogImageUrl,
         blogImageId,
         description,
-        doctorName: blogAuther,
+        doctorName,
         tags,
       },
     });
