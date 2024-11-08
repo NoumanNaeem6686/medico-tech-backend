@@ -16,6 +16,7 @@ const allowedOrigins = [
   "http://localhost:3000",
   // "http://localhost:3001",
   "https://medico-tech-admin-frontend-three.vercel.app/",
+  "https://medico-tech-use-frontend.vercel.app/",
 ];
 
 app.use(

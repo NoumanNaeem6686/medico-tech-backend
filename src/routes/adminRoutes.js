@@ -8,7 +8,6 @@ const {
   getAllBlogs,
   deleteBlog,
   updateBlog,
-
   getBlogById,
 } = require("../controller/adminController");
 // user routes..///
