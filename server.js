@@ -12,19 +12,14 @@ const uploadRoute = require("./src/controller/uploadImage");
 const app = express();
 
 app.use(express.json());
-const allowedOrigins = [
-  "http://localhost:3000",
-  // "http://localhost:3001",
-  "https://medico-tech-admin-frontend-three.vercel.app/",
-  "https://medico-tech-use-frontend.vercel.app/",
-];
+const corsOptions = {
+  origin: "*",
+  "Access-Controll-Allow-Origin": "*",
+  credentials: true,
+  optionSuccessStatus: 200,
+};
 
-app.use(
-  cors({
-    origin: allowedOrigins,
-    credentials: true,
-  })
-);
+app.use(cors(corsOptions));
 app.use(cookieParser());
 app.get("/", (req, res) => {
   res.send("Hello from server");

@@ -19,6 +19,5 @@ routes.post("/create-blog", createBlog);
 routes.get("/all-blogs", getAllBlogs);
 routes.delete("/delete-blog/:id", deleteBlog);
 routes.put("/update-blog/:id", updateBlog);
-routes.get("/get-blog/:id", getBlogById);
-
+2;
 module.exports = routes;
